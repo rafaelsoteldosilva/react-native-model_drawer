@@ -7,7 +7,7 @@ import {
 import {Link, Redirect, router} from "expo-router";
 import {Drawer} from "expo-router/drawer";
 import {ActivityIndicator, View} from "react-native";
-import {useSession} from "../../contexts/ctx";
+import {useSession} from "../../contexts/signInContext";
 
 export default function DrawerLayout() {
     const {session, isLoading} = useSession();

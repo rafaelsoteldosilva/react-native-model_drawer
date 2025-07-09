@@ -2,7 +2,7 @@
 
 import {useEffect} from "react";
 import {Text, View} from "react-native";
-import {useSession} from "../../contexts/ctx";
+import {useSession} from "../../contexts/signInContext";
 
 export default function SignOut() {
     const {signOut} = useSession();

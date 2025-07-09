@@ -9,7 +9,7 @@ import {
     View,
 } from "react-native";
 import {Button, Text, TextInput, useTheme} from "react-native-paper";
-import {useSession} from "../contexts/ctx";
+import {useSession} from "../contexts/signInContext";
 
 export default function SignIn() {
     const [isSignUp, setIsSignUp] = useState(false);

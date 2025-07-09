@@ -3,7 +3,7 @@ import {Stack} from "expo-router";
 import {StatusBar} from "expo-status-bar";
 import {StyleSheet} from "react-native";
 import {GestureHandlerRootView} from "react-native-gesture-handler";
-import {SessionProvider} from "../contexts/ctx";
+import {SessionProvider} from "../contexts/signInContext";
 
 export default function RootLayout() {
     return (
