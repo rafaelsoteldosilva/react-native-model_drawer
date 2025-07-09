@@ -43,7 +43,7 @@ export default function DrawerLayout() {
             <DrawerContentScrollView
                 {...props}
                 contentContainerStyle={{
-                    paddingTop: 50, // Increase this number to push the list down
+                    paddingTop: 70, // Increase this number to push the list down
                 }}
             >
                 {drawerScreens.map((screen) => {
