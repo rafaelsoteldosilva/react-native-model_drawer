@@ -7,5 +7,5 @@ export default function Index() {
 
     if (isLoading) return null;
 
-    return <Redirect href={session ? "/(tabs)/homeTab" : "/signInPage"} />;
+    return <Redirect href={session ? "/(drawer)/homeDrawer" : "/signInPage"} />;
 }

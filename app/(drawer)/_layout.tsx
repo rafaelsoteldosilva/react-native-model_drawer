@@ -1,21 +1,16 @@
-// app/(drawer)/_layout.tsx
-import {DrawerNavigationProp} from "@react-navigation/drawer";
-import {useNavigation} from "@react-navigation/native";
-import {Redirect} from "expo-router";
-import {Drawer} from "expo-router/drawer";
-import {ActivityIndicator, Pressable, View} from "react-native";
-import {useSession} from "../../contexts/ctx";
-
 import {Ionicons} from "@expo/vector-icons";
-
-type DrawerParamList = {
-    home: undefined;
-    profile: undefined;
-};
+import {
+    DrawerContentComponentProps,
+    DrawerContentScrollView,
+    DrawerItem,
+} from "@react-navigation/drawer";
+import {Link, Redirect} from "expo-router";
+import {Drawer} from "expo-router/drawer";
+import {ActivityIndicator, View} from "react-native";
+import {useSession} from "../../contexts/ctx";
 
 export default function DrawerLayout() {
     const {session, isLoading} = useSession();
-    const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>();
 
     if (isLoading) {
         return (
@@ -35,21 +30,82 @@ export default function DrawerLayout() {
         return <Redirect href="/signInPage" />;
     }
 
+    const drawerScreens = [
+        {name: "homeDrawer", label: "Home", icon: "home"},
+        {name: "profileDrawer", label: "Profile", icon: "person"},
+        {name: "signOut", label: "Sign Out", icon: "log-out"},
+    ] as const;
+
+    function CustomDrawerContent(props: DrawerContentComponentProps) {
+        const activeRoute = props.state.routeNames[props.state.index];
+
+        return (
+            <DrawerContentScrollView
+                {...props}
+                contentContainerStyle={{
+                    paddingTop: 50, // Increase this number to push the list down
+                }}
+            >
+                {drawerScreens.map((screen) => {
+                    const isActive = screen.name === activeRoute;
+
+                    return (
+                        <Link
+                            key={screen.name}
+                            href={`/(drawer)/${screen.name}`}
+                            asChild
+                        >
+                            <DrawerItem
+                                label={screen.label}
+                                onPress={() => {}} // required for TS
+                                icon={({color, size}) => (
+                                    <Ionicons
+                                        name={screen.icon}
+                                        size={size}
+                                        color={isActive ? "green" : color}
+                                        style={{
+                                            marginRight: -4,
+                                            marginLeft: -15,
+                                        }}
+                                    />
+                                )}
+                                labelStyle={{
+                                    fontSize: 16,
+                                    fontWeight: isActive ? "bold" : "500",
+                                    marginLeft: -4,
+                                    color: isActive ? "green" : "white",
+                                }}
+                                style={{
+                                    marginHorizontal: 10,
+                                    // marginVertical: 4,
+                                    borderRadius: 12,
+                                    backgroundColor: isActive
+                                        ? "#e0ffe0"
+                                        : "transparent",
+                                }}
+                                activeTintColor="green"
+                                inactiveTintColor="#ccc"
+                            />
+                        </Link>
+                    );
+                })}
+            </DrawerContentScrollView>
+        );
+    }
+
     return (
         <Drawer
             screenOptions={{
-                headerLeft: () => (
-                    <Pressable
-                        onPress={() => navigation.toggleDrawer()}
-                        style={{marginLeft: 15}}
-                    >
-                        <Ionicons name="menu" size={24} />
-                    </Pressable>
-                ),
+                drawerActiveTintColor: "green",
+                drawerInactiveTintColor: "#666",
+                drawerLabelStyle: {
+                    fontSize: 16,
+                },
+                drawerStyle: {
+                    backgroundColor: "#121A22", // your desired background color here
+                },
             }}
-        >
-            <Drawer.Screen name="home" options={{title: "Home"}} />
-            <Drawer.Screen name="profile" options={{title: "Profile"}} />
-        </Drawer>
+            drawerContent={(props) => <CustomDrawerContent {...props} />}
+        />
     );
 }

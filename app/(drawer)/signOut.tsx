@@ -1,4 +1,5 @@
-// app/(tabs)/signOut.tsx
+// app/(drawer)/signOut.tsx
+
 import {useEffect} from "react";
 import {Text, View} from "react-native";
 import {useSession} from "../../contexts/ctx";
