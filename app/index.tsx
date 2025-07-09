@@ -1,5 +1,6 @@
 // app/index.tsx
 import {Redirect} from "expo-router";
+import "react-native-gesture-handler";
 import {useSession} from "../contexts/ctx";
 
 export default function Index() {

@@ -4,7 +4,7 @@ import {
     DrawerContentScrollView,
     DrawerItem,
 } from "@react-navigation/drawer";
-import {Link, Redirect} from "expo-router";
+import {Link, Redirect, router} from "expo-router";
 import {Drawer} from "expo-router/drawer";
 import {ActivityIndicator, View} from "react-native";
 import {useSession} from "../../contexts/ctx";
@@ -57,7 +57,9 @@ export default function DrawerLayout() {
                         >
                             <DrawerItem
                                 label={screen.label}
-                                onPress={() => {}} // required for TS
+                                onPress={() =>
+                                    router.push(`/(drawer)/${screen.name}`)
+                                }
                                 icon={({color, size}) => (
                                     <Ionicons
                                         name={screen.icon}
