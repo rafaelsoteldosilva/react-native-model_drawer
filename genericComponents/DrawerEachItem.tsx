@@ -1,7 +1,7 @@
 // DrawerLinkItem.tsx
 import {DrawerItem} from "@react-navigation/drawer";
 import {router} from "expo-router";
-import {useSession} from "../../contexts/signInContext";
+import {useSession} from "../contexts/signInContext";
 
 type DrawerLinkItemProps = {
     name: string;
@@ -13,7 +13,7 @@ type DrawerLinkItemProps = {
     isActive: boolean;
 };
 
-export function DrawerLinkItem({
+export function DrawerEachItem({
     name,
     label,
     icon,

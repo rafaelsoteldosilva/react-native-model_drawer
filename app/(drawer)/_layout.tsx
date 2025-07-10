@@ -8,7 +8,7 @@ import {Drawer} from "expo-router/drawer";
 import {ActivityIndicator, View} from "react-native";
 
 import {useSession} from "../../contexts/signInContext";
-import {DrawerLinkItem} from "./DrawerLinkItem";
+import {DrawerEachItem} from "../../genericComponents/DrawerEachItem";
 
 export default function DrawerLayout() {
     const {session, isLoading} = useSession();
@@ -67,7 +67,7 @@ export default function DrawerLayout() {
                 {drawerScreens.map((screen) => {
                     const isActive = screen.name === activeRoute;
                     return (
-                        <DrawerLinkItem
+                        <DrawerEachItem
                             key={screen.name}
                             name={screen.name}
                             label={screen.label}
