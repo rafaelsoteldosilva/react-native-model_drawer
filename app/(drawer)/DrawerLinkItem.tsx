@@ -1,3 +1,4 @@
+// (drawer)/DrawerLinkItem.tsx
 import {Ionicons} from "@expo/vector-icons";
 import {DrawerItem} from "@react-navigation/drawer";
 import {router} from "expo-router";
