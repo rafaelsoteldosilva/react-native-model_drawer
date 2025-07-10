@@ -7,7 +7,7 @@ import {Redirect} from "expo-router";
 import {Drawer} from "expo-router/drawer";
 import {ActivityIndicator, View} from "react-native";
 
-import {useSession} from "../../contexts/signInContext";
+import {useSession} from "../../contexts/signInSessionContext";
 import {DrawerEachItem} from "../../genericComponents/DrawerEachItem";
 
 export default function DrawerLayout() {
@@ -28,17 +28,17 @@ export default function DrawerLayout() {
     }
 
     if (!session) {
-        return <Redirect href="/signInPage" />;
+        return <Redirect href="/signInScreen" />;
     }
 
     const drawerScreens = [
         {
-            name: "homeDrawer",
+            name: "homeDrawerScreen",
             label: "Home",
             icon: {library: FontAwesome, name: "home"},
         },
         {
-            name: "profileDrawer",
+            name: "profileDrawerScreen",
             label: "Profile",
             icon: {library: MaterialIcons, name: "person-outline"},
         },
@@ -61,7 +61,7 @@ export default function DrawerLayout() {
                         marginBottom: 16,
                     }}
                 >
-                    <Ionicons name="apps" size={64} color="green" />
+                    <Ionicons name="apps" size={25} color="green" />
                 </View>
 
                 {drawerScreens.map((screen) => {

@@ -1,7 +1,7 @@
-// DrawerLinkItem.tsx
+// DrawerEachItem.tsx
 import {DrawerItem} from "@react-navigation/drawer";
 import {router} from "expo-router";
-import {useSession} from "../contexts/signInContext";
+import {useSession} from "../contexts/signInSessionContext";
 
 type DrawerLinkItemProps = {
     name: string;
@@ -25,7 +25,7 @@ export function DrawerEachItem({
     const handlePress = () => {
         if (name === "signOut") {
             signOut();
-            router.replace("/signInPage");
+            router.replace("/signInScreen");
         } else {
             router.push(`/(drawer)/${name}` as any);
         }

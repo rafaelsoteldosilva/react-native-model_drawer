@@ -1,4 +1,5 @@
 // app/signInPage.tsx
+// Calling it just SignIn.tsx throws some errors, so keeping it as is.
 import {router} from "expo-router";
 import {useState} from "react";
 import {
@@ -9,7 +10,7 @@ import {
     View,
 } from "react-native";
 import {Button, Text, TextInput, useTheme} from "react-native-paper";
-import {useSession} from "../contexts/signInContext";
+import {useSession} from "../contexts/signInSessionContext";
 
 export default function SignIn() {
     const [isSignUp, setIsSignUp] = useState(false);

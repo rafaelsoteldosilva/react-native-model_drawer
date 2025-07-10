@@ -1,4 +1,4 @@
-// contexts/signInContext.tsx
+// contexts/signInSessionContext.tsx
 import {createContext, use, type PropsWithChildren} from "react";
 import {useStorageState} from "../hooks/useStorage";
 
