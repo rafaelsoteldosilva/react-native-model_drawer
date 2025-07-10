@@ -1,5 +1,4 @@
-// (drawer)/DrawerLinkItem.tsx
-import {Ionicons} from "@expo/vector-icons";
+// DrawerLinkItem.tsx
 import {DrawerItem} from "@react-navigation/drawer";
 import {router} from "expo-router";
 import {useSession} from "../../contexts/signInContext";
@@ -7,7 +6,10 @@ import {useSession} from "../../contexts/signInContext";
 type DrawerLinkItemProps = {
     name: string;
     label: string;
-    icon: string;
+    icon: {
+        library: React.ComponentType<any>; // <- relaxed typing
+        name: string;
+    };
     isActive: boolean;
 };
 
@@ -18,6 +20,7 @@ export function DrawerLinkItem({
     isActive,
 }: DrawerLinkItemProps) {
     const {signOut} = useSession();
+    const IconLibrary = icon.library;
 
     const handlePress = () => {
         if (name === "signOut") {
@@ -33,14 +36,11 @@ export function DrawerLinkItem({
             label={label}
             onPress={handlePress}
             icon={({color, size}) => (
-                <Ionicons
-                    name={icon as any}
+                <IconLibrary
+                    name={icon.name}
                     size={size}
                     color={isActive ? "green" : color}
-                    style={{
-                        marginRight: -4,
-                        marginLeft: -15,
-                    }}
+                    style={{marginRight: -4, marginLeft: -15}}
                 />
             )}
             labelStyle={{
@@ -54,8 +54,6 @@ export function DrawerLinkItem({
                 borderRadius: 12,
                 backgroundColor: isActive ? "#e0ffe0" : "transparent",
             }}
-            activeTintColor="green"
-            inactiveTintColor="#ccc"
         />
     );
 }
