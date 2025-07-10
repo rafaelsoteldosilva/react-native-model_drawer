@@ -1,4 +1,4 @@
-// contexts/ctx.tsx
+// contexts/signInContext.tsx
 import {createContext, use, type PropsWithChildren} from "react";
 import {useStorageState} from "../hooks/useStorage";
 
@@ -31,7 +31,6 @@ export function SessionProvider({children}: PropsWithChildren) {
         <AuthContext.Provider
             value={{
                 signIn: (email: string) => {
-                    console.log("SessionProvider:: Sign in with:", email);
                     setSession(email);
                 },
                 signOut: () => {

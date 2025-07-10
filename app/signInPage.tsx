@@ -24,7 +24,6 @@ export default function SignIn() {
     }
 
     async function handleAuth() {
-        console.log("signIn:: in handleAuth");
         if (!email || !password) {
             setError("Email and password are required.");
             return;
@@ -39,7 +38,6 @@ export default function SignIn() {
             return;
         }
 
-        console.log("signIn:: calling signIn with:", email);
         setError(null);
         signIn(email);
         router.replace("/");
