@@ -1,5 +1,4 @@
-// app/signInPage.tsx
-// Calling it just SignIn.tsx throws some errors, so keeping it as is.
+// app/signInScreen.tsx
 import {router} from "expo-router";
 import {useState} from "react";
 import {
@@ -12,7 +11,7 @@ import {
 import {Button, Text, TextInput, useTheme} from "react-native-paper";
 import {useSession} from "../contexts/signInSessionContext";
 
-export default function SignIn() {
+export default function SignInScreen() {
     const [isSignUp, setIsSignUp] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -40,7 +39,7 @@ export default function SignIn() {
         }
 
         setError(null);
-        signIn(email);
+        await signIn(email);
         router.replace("/");
     }
 

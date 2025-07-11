@@ -1,3 +1,4 @@
+// (drawer)/_layout.tsx
 import {FontAwesome, Ionicons, MaterialIcons} from "@expo/vector-icons";
 import {
     DrawerContentComponentProps,
